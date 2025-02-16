@@ -1,7 +1,7 @@
 # Hypothesis-Driven Threat Hunt: Fake CAPTCHA Prompting Malicious PowerShell Execution
 
 ## Step 1: Define the Hypothesis
-"Threat actors are deploying fake CAPTCHA challenges that instruct users to execute malicious PowerShell commands, leading to system compromise."
+Threat actors use fake CAPTCHA challenges to socially engineer victims into copying and executing malicious PowerShell commands, leading to initial access, malware execution, or system compromise.
 
 ## Step 2: Identify Data Sources
 To detect such activities, monitor:
