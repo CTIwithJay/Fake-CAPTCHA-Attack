@@ -22,4 +22,45 @@ To detect such activities, monitor:
 ### For Google Chronicle (YARA-L)
 
 **Detect Clipboard Copying of PowerShell Commands**:  
-While direct clipboard monitoring might be challenging, focus on detecting subsequent PowerShell executions that could result from actions involving clipboard copying. YARA-L can be used to identify patterns indicative of PowerShell commands being executed after clipboard copying events.
+Focus on detecting subsequent PowerShell executions that could result from clipboard copying actions. YARA-L can be used to identify patterns indicative of PowerShell commands being executed after clipboard copying events.
+
+
+### For Google Chronicle (YARA-L).
+rule suspicious_powershell_execution {
+    meta:
+        description = "Detects PowerShell executions that may result from malicious clipboard content"
+    events:
+        $ps_exec.metadata.event_type = "PROCESS_LAUNCH"
+        and $ps_exec.process_name = "powershell.exe"
+        and $ps_exec.command_line matches /.*(Invoke-WebRequest|IEX|DownloadString).*/
+    condition:
+        $ps_exec
+}
+
+----------------------------------------------------------------------------------------------
+### Identify PowerShell Download and Execution:
+
+rule powershell_download_execute {
+    meta:
+        description = "Detects PowerShell commands that download and execute scripts"
+    events:
+        $ps_exec.metadata.event_type = "PROCESS_LAUNCH"
+        and $ps_exec.process_name = "powershell.exe"
+        and $ps_exec.command_line matches /.*(New-Object\s+Net.WebClient|Invoke-WebRequest).*(DownloadString|DownloadFile).*/
+    condition:
+        $ps_exec
+}
+
+----------------------------------------------------------------------------------------------
+### For SentinelOne (EDR):
+
+SELECT 
+    process_name, command_line, user, device_name, timestamp 
+FROM 
+    processes 
+WHERE 
+    process_name = 'powershell.exe' 
+    AND command_line LIKE '%(New-Object Net.WebClient)%' 
+    AND command_line LIKE '%DownloadString%'
+ORDER BY timestamp DESC;
+
