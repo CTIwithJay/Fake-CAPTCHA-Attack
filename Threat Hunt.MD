@@ -19,13 +19,13 @@ To detect such activities, monitor:
 
 ## Step 4: Develop Detection Queries
 
-### For Google Chronicle (YARA-L)
+### (YARA-L)
 
 **Detect Clipboard Copying of PowerShell Commands**:  
 Focus on detecting subsequent PowerShell executions that could result from clipboard copying actions. YARA-L can be used to identify patterns indicative of PowerShell commands being executed after clipboard copying events.
 
 
-### For Google Chronicle (YARA-L).
+### (YARA-L).
 ```
 rule suspicious_powershell_execution {
     meta:
