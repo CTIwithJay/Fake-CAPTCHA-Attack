@@ -27,15 +27,15 @@ Focus on detecting subsequent PowerShell executions that could result from clipb
 
 ### For Google Chronicle (YARA-L).
 rule suspicious_powershell_execution {
-#   meta:
-#       description = "Detects PowerShell executions that may result from malicious clipboard content"
-#   events:
-#       $ps_exec.metadata.event_type = "PROCESS_LAUNCH"
-#       and $ps_exec.process_name = "powershell.exe"
-#       and $ps_exec.command_line matches /.*(Invoke-WebRequest|IEX|DownloadString).*/
-#   condition:
-#       $ps_exec
-# }
+*   meta:
+*       description = "Detects PowerShell executions that may result from malicious clipboard content"
+*   events:
+*       $ps_exec.metadata.event_type = "PROCESS_LAUNCH"
+*       and $ps_exec.process_name = "powershell.exe"
+*       and $ps_exec.command_line matches /.*(Invoke-WebRequest|IEX|DownloadString).*/
+*   condition:
+*       $ps_exec
+* }
 
 ----------------------------------------------------------------------------------------------
 ### Identify PowerShell Download and Execution:
