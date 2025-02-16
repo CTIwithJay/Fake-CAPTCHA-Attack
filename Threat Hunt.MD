@@ -16,3 +16,10 @@ To detect such activities, monitor:
 - **PowerShell Execution**: Commands initiating downloads or executing scripts from external sources.
 - **Network Connections**: Outbound traffic to known malicious domains or IPs.
 - **File System Changes**: Creation of unauthorized scripts or executables.
+
+## Step 4: Develop Detection Queries
+
+### For Google Chronicle (YARA-L)
+
+**Detect Clipboard Copying of PowerShell Commands**:  
+While direct clipboard monitoring might be challenging, focus on detecting subsequent PowerShell executions that could result from actions involving clipboard copying. YARA-L can be used to identify patterns indicative of PowerShell commands being executed after clipboard copying events.
