@@ -38,30 +38,3 @@ rule suspicious_powershell_execution {
         $ps_exec
 }
 
-----------------------------------------------------------------------------------------------
-### Identify PowerShell Download and Execution:
-
-rule powershell_download_execute {
-    meta:
-        description = "Detects PowerShell commands that download and execute scripts"
-    events:
-        $ps_exec.metadata.event_type = "PROCESS_LAUNCH"
-        and $ps_exec.process_name = "powershell.exe"
-        and $ps_exec.command_line matches /.*(New-Object\s+Net.WebClient|Invoke-WebRequest).*(DownloadString|DownloadFile).*/
-    condition:
-        $ps_exec
-}
-
-----------------------------------------------------------------------------------------------
-### For SentinelOne (EDR):
-
-SELECT 
-    process_name, command_line, user, device_name, timestamp 
-FROM 
-    processes 
-WHERE 
-    process_name = 'powershell.exe' 
-    AND command_line LIKE '%(New-Object Net.WebClient)%' 
-    AND command_line LIKE '%DownloadString%'
-ORDER BY timestamp DESC;
-
