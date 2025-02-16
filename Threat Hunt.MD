@@ -26,7 +26,7 @@ Focus on detecting subsequent PowerShell executions that could result from clipb
 
 
 ### For Google Chronicle (YARA-L).
-`
+```
 rule suspicious_powershell_execution {
     meta:
         description = "Detects PowerShell executions that may result from malicious clipboard content"
@@ -37,4 +37,4 @@ rule suspicious_powershell_execution {
     condition:
         $ps_exec
 }
-`
+```
