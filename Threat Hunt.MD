@@ -53,4 +53,10 @@ rule powershell_download_execute {
         $ps_exec
 }
 ```
+---------------------------------------------------------------------------   
+### Identify PowerShell Download and Execution:
+Regex Pattern: Monitor PowerShell Executions with Suspicious Parameters:
+```
+.*(Invoke-WebRequest|IEX|DownloadString|New-Object\s+Net.WebClient|Invoke-Expression).*(http|https|file|ftp).*
+```
 
